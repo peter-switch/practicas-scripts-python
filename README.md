@@ -1,4 +1,4 @@
-# practicas-python-scripts 🐍
+# Prácticas Python 🐍
 
 Un repositorio para ir adquiriendo habilidad en Python resolviendo pequeños problemas y desafíos de programación.  
 
