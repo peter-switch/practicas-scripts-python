@@ -55,8 +55,8 @@ def mensaje_advertencia(lista_peligrosos):
     nombres=[(villanos["nombre"]) for villanos in mas_peligrosos]
         
     mensaje=f"* * * Los criminales más peligrosos son: {nombres[0]} y {nombres[1]} * * *"
-  
-    return print(mensaje)
+    print(mensaje)
+    return mensaje
 
 # --- Ejecución ---
 #print(filtrar_peligrosos(criminales))
