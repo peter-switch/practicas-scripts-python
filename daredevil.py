@@ -13,12 +13,12 @@ criminales = [
 def filtrar_peligrosos(lista_criminales):
     peligrosos = []
     for criminal in lista_criminales: #Recorremos la lista
-        
         if criminal["peligrosidad"]>=7: #Preguntamos a cada elemento de la lista por su peligrosidad
             peligrosos.append(criminal) #Añadimos a el criminar a la lista de peligrosos
     return peligrosos
 
 # 2. Ordenar de mayor a menor peligrosidad
+
 def ordenar_peligrosos(lista_peligrosos): #funcion recibe lista de criminales
     
     lista_ordenada=sorted(lista_peligrosos,key=lambda criminal:criminal["peligrosidad"],reverse=True)
@@ -29,28 +29,37 @@ def ordenar_peligrosos(lista_peligrosos): #funcion recibe lista de criminales
     return lista_ordenada
 
 # 3. Buscar al Kingpin (Wilson Fisk) en la lista
-def encontrar_kingpin(lista_criminales):
 
-# ¡Completa aquí!
-    kingpin_encontrado=False
-    for dict in lista_criminales:
+def encontrar_kingpin(lista_criminales): #La función recibe la lista de criminales(es una lista con diccionarios dentro)
+
+    kingpin_encontrado=False #Usamos este booleano en False, si encontramos a Kinping lo pasamos a True
+
+    for dict in lista_criminales: #Iteramos con bucle for la lista de criminales pasando cada elemento diccionario a la variable dict
       
-        if dict["nombre"]=="Wilson Fisk":
+        if dict["nombre"]=="Wilson Fisk": #Si el elemento del diccionario dict["nombre"] contiene el nombre de pila de Kingpin...
             
-            kingpin_encontrado=True
-            break
+            kingpin_encontrado=True #Cambiamos el boleano a True
+            break #Importante romper el bucle si encontramos a Kingping para que no machaque el valor en siguientes iteraciones
         else:    
             kingpin_encontrado=False
 
-    return "¡Kingpin encontrado!" if kingpin_encontrado else "Kingpin no está en la lista."
+    return "¡Kingpin encontrado!" if kingpin_encontrado else "Kingpin no está en la lista." #Retornamos un if con los textos convenientes.
 
 # 4. Generar mensaje de advertencia
+
 def mensaje_advertencia(lista_peligrosos):
-    # Ejemplo: "¡Cuidado! Los criminales más peligrosos son: Wilson Fisk, Bullseye."
-    # ¡Completa aquí!
-    return mensaje
+    #Ordenamos la lista con sorted.Para la key usamos una func lambfa que recibe cada  elemento y ordena en funcion del valor peligrosidad.[:2]nos devuelve los 2 primeros
+    mas_peligrosos=sorted(lista_peligrosos,key=lambda criminal:criminal["peligrosidad"],reverse=True)[:2]
+
+       #Iteramos la lista ordenada con un bucle for y almacenamos solo los nombres en una lista de nombres.
+    nombres=[(villanos["nombre"]) for villanos in mas_peligrosos]
+        
+    mensaje=f"* * * Los criminales más peligrosos son: {nombres[0]} y {nombres[1]} * * *"
+  
+    return print(mensaje)
 
 # --- Ejecución ---
 #print(filtrar_peligrosos(criminales))
 #print(ordenar_peligrosos(criminales))
-print(encontrar_kingpin(criminales))
+# print(encontrar_kingpin(criminales))
+mensaje_advertencia(criminales)
