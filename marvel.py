@@ -28,7 +28,14 @@ filtrar_personajes(personajes,False) #Ejecuta la función
 
 def encontrar_mas_poderoso(lista_personajes):
     # Retorna el personaje con mayor poder (si hay empate, retorna cualquiera de ellos).
-    pass
+    #mas_poderoso=sorted(lista_personajes, key=lambda x: x["poder"],reverse="True")[0]
+    mas_poderoso=(max(lista_personajes,key=lambda x:x["poder"]))
+
+    print(f'* * * El más poderoso es: {mas_poderoso["nombre"]}* * *')
+    return mas_poderoso
+
+
+encontrar_mas_poderoso(personajes)
 
 def formar_equipo(lista_personajes, es_heroe, poder_minimo):
     # Retorna un equipo (lista) de héroes o villanos con poder >= poder_minimo.
