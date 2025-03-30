@@ -56,6 +56,32 @@ formar_equipo(personajes, False, 8)
 
 # --- ¡Extra opcional! ---
 def encontrar_rivales(lista_personajes, diferencia_maxima=1):
+
     # Retorna parejas [héroe, villano] cuyos poderes difieran en <= diferencia_maxima.
     # Ej: ("Iron Man", "Loki") (poder 9 vs 9).
-    pass
+
+    lista_heroes=list(filter(lambda x: x["es_heroe"]==True, lista_personajes)) #filro heroes
+    lista_villanos=list(filter(lambda x: x["es_heroe"]==False, lista_personajes)) #filtro villanos
+
+    combates=[]
+
+    for heroe in lista_heroes: #bucle for anidado para poder comparar heroes y villanos
+
+        for villano in lista_villanos:
+
+            #abs es muy util pq devuelve núm positivo en las restas. 5-10=-5 con abs da 5.
+
+            if abs(heroe["poder"] - villano["poder"]) <= diferencia_maxima <= diferencia_maxima:
+
+                combates.append(f'{heroe["nombre"]} {heroe["poder"]} Vs {villano["nombre"]} {villano["poder"]}')
+                 
+    if combates:
+        print("Combates encontrados")
+        for combate in combates:
+            print(combate)
+            #print("\n¡Combates encontrados!\n" + "\n".join(combates)) Otra forma de hacerlo sin blucle for.     
+    else:
+        print("No hay combate posible")   
+
+
+encontrar_rivales(personajes)
