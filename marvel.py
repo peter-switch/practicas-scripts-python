@@ -29,7 +29,7 @@ filtrar_personajes(personajes,False) #Ejecuta la función
 def encontrar_mas_poderoso(lista_personajes):
     # Retorna el personaje con mayor poder (si hay empate, retorna cualquiera de ellos).
     #mas_poderoso=sorted(lista_personajes, key=lambda x: x["poder"],reverse="True")[0]
-    mas_poderoso=(max(lista_personajes,key=lambda x:x["poder"]))
+    mas_poderoso=(max(lista_personajes,key=lambda x:x["poder"]))#con max encontramos el valor máximo en función del valor poder
 
     print(f'* * * El más poderoso es: {mas_poderoso["nombre"]}* * *')
     return mas_poderoso
@@ -40,7 +40,19 @@ encontrar_mas_poderoso(personajes)
 def formar_equipo(lista_personajes, es_heroe, poder_minimo):
     # Retorna un equipo (lista) de héroes o villanos con poder >= poder_minimo.
     # Ej: formar_equipo(personajes, True, 8) -> [Iron Man, Scarlet Witch]
-    pass
+
+    #filter devuelve un objeto tipo filter por lo que hay q convertir en lista.El primer paramentro es una función anónima.
+    #el segudo parámetro es el objeto a iterar, en este caso la lista de diccioanarios personajes.
+    lista_equipo = list(filter(lambda x: x["es_heroe"] == es_heroe and x["poder"] >= poder_minimo, lista_personajes))
+
+    print(f'El equipo de {"Héroes" if es_heroe else "Villanos"} esta compuesto por:')
+    for i in lista_equipo: #recorre la lista imprimiendo los nombres.
+        print(i["nombre"])
+   
+    return lista_equipo
+
+formar_equipo(personajes, False, 8)
+
 
 # --- ¡Extra opcional! ---
 def encontrar_rivales(lista_personajes, diferencia_maxima=1):
