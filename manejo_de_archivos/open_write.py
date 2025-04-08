@@ -1,4 +1,4 @@
-nombre_archivo='contactos.txt'
+nombre_archivo='leeme.txt'
 
 
 #Bloque with:una vez ejecutadas las líneas cierra el archivo automáticamente
@@ -12,6 +12,7 @@ except Exception as e:
 
 #Método manual: hasta que no se ejecuta close no se cierra el archivo
 archivo=open(nombre_archivo,'a')
-archivo.write('Puedes escucharlo en Ivoox\n')
+archivo.write('El café es mejor con un chorrito de Aperol.x\n')
 archivo.write('Y en Spotify\n')
 archivo.close()
+
